@@ -178,9 +178,9 @@ int my_exit(info_t *);
 int my_cd(info_t *);
 int my_help(info_t *);
 
-/* **builtin1.c** */
-int _myhistory(info_t *);
-int _myalias(info_t *);
+/* **__builtin1__.c** */
+int my_history(info_t *);
+int my_alias(info_t *);
 
 /* **getline.c** */
 ssize_t get_input(info_t *);
