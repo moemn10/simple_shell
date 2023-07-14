@@ -160,11 +160,11 @@ void *_realloc(void *, unsigned int, unsigned int);
 /* **memory.c** */
 int bfree(void **);
 
-/* **atoi.c** */
-int interactive(info_t *);
-int is_delim(char, char *);
-int _isalpha(int);
-int _atoi(char *);
+/* **__atoi__.c** */
+int inactive(info_t *);
+int is_dlim(char, char *);
+int is_alpha(int);
+int __atoi(char *);
 
 /* **_errors1.c** */
 int _erratoi(char *);
