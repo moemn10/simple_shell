@@ -228,11 +228,11 @@ size_t out_list(const list_t *);
 list_t *node_start(list_t *, char *, char);
 ssize_t Get_node(list_t *, list_t *);
 
-/* **vars.c** */
-int is_chain(info_t *, char *, size_t *);
-void check_chain(info_t *, char *, size_t *, size_t, size_t);
-int replace_alias(info_t *);
-int replace_vars(info_t *);
-int replace_string(char **, char *);
+/* **__vars.c__** */
+int bbc(info_t *, char *, size_t *);
+void check_bbc(info_t *, char *, size_t *, size_t, size_t);
+int rep_alias(info_t *);
+int rep_vars(info_t *);
+int rep_string(char **, char *);
 
 #endif
