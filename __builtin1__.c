@@ -1,115 +1,97 @@
 #include "shell.h"
 
 /**
- * my_history - Displaying the history list, one command by line, preceded
- *              with line numbers, starting at 0.
+ * my_exit - exiting the shell
  * @info: Structure containing potential arguments. Used to maintain
- *        constant function prototype.
- *  Return: Always 0
+ * constant function prototype.
+ * Return: exits with a given exit status
+ * (0) if info.argv[0] != "exit"
  */
-int my_history(info_t *info)
+int my_exit(info_t *info)
 {
-	print_list(info->history);
+	int exitcheck;
+
+	if (info->argv[1]) /* **If there is an exit arguement** */
+	{
+		exitcheck = _erratoi(info->argv[1]);
+		if (exitcheck == -1)
+		{
+			info->status = 2;
+			print_error(info, "Illegal number: ");
+			_eputs(info->argv[1]);
+			_eputchar('\n');
+			return (1);
+		}
+		info->err_num = _erratoi(info->argv[1]);
+		return (-2);
+	}
+	info->err_num = -1;
+	return (-2);
+}
+
+/**
+ * my_cd - changes the current directory of the process
+ * @info: Structure containing potential arguments. Used to maintain
+ * constant function prototype.
+ * Return: Always 0
+ */
+int my_cd(info_t *info)
+{
+	char *h, *dir, buffer[1024];
+	int chdir_ret;
+
+	h = getcwd(buffer, 1024);
+	if (!h)
+		_puts("TODO: >>getcwd failure emsg here<<\n");
+	if (!info->argv[1])
+	{
+		dir = _getenv(info, "HOME=");
+		if (!dir)
+			chdir_ret = /* TODO: what should this be? */
+				chdir((dir = _getenv(info, "PWD=")) ? dir : "/");
+		else
+			chdir_ret = chdir(dir);
+	}
+	else if (_strcmp(info->argv[1], "-") == 0)
+	{
+		if (!_getenv(info, "OLDPWD="))
+		{
+			_puts(h);
+			_putchar('\n');
+			return (1);
+		}
+		_puts(_getenv(info, "OLDPWD=")), _putchar('\n');
+		chdir_ret = /* TODO: what should this be? */
+			chdir((dir = _getenv(info, "OLDPWD=")) ? dir : "/");
+	}
+	else
+		chdir_ret = chdir(info->argv[1]);
+	if (chdir_ret == -1)
+	{
+		print_error(info, "can't cd to ");
+		_eputs(info->argv[1]), _eputchar('\n');
+	}
+	else
+	{
+		_setenv(info, "OLDPWD", _getenv(info, "PWD="));
+		_setenv(info, "PWD", getcwd(buffer, 1024));
+	}
 	return (0);
 }
 
 /**
- * _unset_alias - sets alias to string
- * @info: parameter struct
- * @str: the string alias
- *
- * Return: Always 0 on success, 1 on error
- */
-int _unset_alias(info_t *info, char *str)
-{
-	char *k, x;
-	int rt;
-
-	k = _strchr(str, '=');
-	if (!k)
-		return (1);
-	x = *k;
-	*k = 0;
-	rt = delete_node_at_index(&(info->alias),
-		get_node_index(info->alias, node_starts_with(info->alias, str, -1)));
-	*k = x;
-	return (rt);
-}
-
-/**
- * seting_alias - Seting alias to string
- * @info: Parameter struct
- * @str: The string alias
- *
- * Return: Always 0 on success, 1 on error
- */
-int seting_alias(info_t *info, char *str)
-{
-	char *k;
-
-	k = _strchr(str, '=');
-	if (!k)
-		return (1);
-	if (!*++k)
-		return (_unset_alias(info, str));
-
-	_unset_alias(info, str);
-	return (add_node_end(&(info->alias), str, 0) == NULL);
-}
-
-/**
- * printing_alias - Printing an alias string
- * @node: the alias node
- *
- * Return: Always 0 on success, 1 on error
- */
-int printing_alias(list_t *node)
-{
-	char *k = NULL, *z = NULL;
-
-	if (node)
-	{
-		k = _strchr(node->str, '=');
-		for (z = node->str; z <= k; z++)
-		_putchar(*z);
-		_putchar('\'');
-		_puts(k + 1);
-		_puts("'\n");
-		return (0);
-	}
-	return (1);
-}
-
-/**
- * my_alias - mimics the alias builtin (man alias)
+ * my_help - changes the current directory of the process
  * @info: Structure containing potential arguments. Used to maintain
- *          constant function prototype.
- *  Return: Always 0
+ * constant function prototype.
+ * Return: Always 0
  */
-int my_alias(info_t *info)
+int my-help(info_t *info)
 {
-	int r = 0;
-	char *k = NULL;
-	list_t *node = NULL;
+	char **arg_array;
 
-	if (info->argc == 1)
-	{
-		node = info->alias;
-		while (node)
-		{
-			printing_alias(node);
-			node = node->next;
-		}
-		return (0);
-	}
-	for (r = 1; info->argv[r]; r++)
-	{
-		k = _strchr(info->argv[r], '=');
-		if (k)
-			seting_alias(info, info->argv[r]);
-		else
-			printing_alias(node_starts_with(info->alias, info->argv[r], '='));
-	}
-
+	arg_array = info->argv;
+	_puts("help call works. Function not yet implemented \n");
+	if (0)
+		_puts(*arg_array); /* temp att_unused workaround */
 	return (0);
 }
