@@ -131,11 +131,11 @@ int _erputchar(char);
 int _putfd_(char x, int fd);
 int _putsfd_(char *str, int fd);
 
-/* **string.c** */
-int _strlen(char *);
-int _strcmp(char *, char *);
-char *starts_with(const char *, const char *);
-char *_strcat(char *, char *);
+/* **__string__.c** */
+int _strlength(char *);
+int _strgo(char *, char *);
+char *start_data(const char *, const char *);
+char *_str_dot(char *, char *);
 
 /* **string1.c** */
 char *_strcpy(char *, char *);
