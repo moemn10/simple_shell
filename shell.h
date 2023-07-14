@@ -125,11 +125,11 @@ char *search(info_t *, char *, char *);
 /* **loophsh**.c */
 int loophsh(char **);
 
-/* **errors.c** */
-void _eputs(char *);
-int _eputchar(char);
-int _putfd(char c, int fd);
-int _putsfd(char *str, int fd);
+/* **__errors1__.c** */
+void _erputs(char *);
+int _erputchar(char);
+int _putfd_(char x, int fd);
+int _putsfd_(char *str, int fd);
 
 /* **string.c** */
 int _strlen(char *);
@@ -166,7 +166,7 @@ int is_dlim(char, char *);
 int is_alpha(int);
 int __atoi(char *);
 
-/* **_errors1.c** */
+/* **_errors2.c** */
 int _erratoi(char *);
 void print_error(info_t *, char *);
 int print_d(int, int);
@@ -194,12 +194,12 @@ void clear_info(info_t *);
 void set_info(info_t *, char **);
 void free_info(info_t *, int);
 
-/* **environ.c** */
-char *_getenv(info_t *, const char *);
-int _myenv(info_t *);
-int _mysetenv(info_t *);
-int _myunsetenv(info_t *);
-int populate_env_list(info_t *);
+/* **__environment__.c** */
+char *get_env(info_t *, const char *);
+int my_env(info_t *);
+int my_set_env(info_t *);
+int my_unset_env(info_t *);
+int pop_env_list(info_t *);
 
 /* **getenv.c** */
 char **get_environ(info_t *);
