@@ -143,7 +143,7 @@ char *_strdup(const char *);
 void _puts(char *);
 int _putchar(char);
 
-/* **exits.c** */
+/* **__exits__.c** */
 char *_strncpy(char *, char *, int);
 char *_strncat(char *, char *, int);
 char *_strchr(char *, char);
@@ -202,10 +202,10 @@ int my_set_env(info_t *);
 int my_unset_env(info_t *);
 int pop_env_list(info_t *);
 
-/* **getenv.c** */
-char **get_environ(info_t *);
-int _unsetenv(info_t *, char *);
-int _setenv(info_t *, char *, char *);
+/* **__geting_env__.c** */
+char **geting_environ(info_t *);
+int _unseting_env(info_t *, char *);
+int _seting_env(info_t *, char *, char *);
 
 /* **history.c** */
 char *get_history_file(info_t *info);
