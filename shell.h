@@ -148,9 +148,9 @@ char *_strncpy(char *, char *, int);
 char *_strncat(char *, char *, int);
 char *_strchr(char *, char);
 
-/* **tokenizer.c** */
-char **strtow(char *, char *);
-char **strtow2(char *, char);
+/* **__tokenizer__.c** */
+char **str_V_one(char *, char *);
+char **str_V_Tow(char *, char);
 
 /* **__realloc.c__** */
 char *_mset(char *, char, unsigned int);
