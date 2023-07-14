@@ -153,9 +153,9 @@ char **strtow(char *, char *);
 char **strtow2(char *, char);
 
 /* **realloc.c** */
-char *_memset(char *, char, unsigned int);
-void ffree(char **);
-void *_realloc(void *, unsigned int, unsigned int);
+char *_mset(char *, char, unsigned int);
+void dbfree(char **);
+void *_lloc(void *, unsigned int, unsigned int);
 
 /* **__memory.c__** */
 int Sysdb(void **);
