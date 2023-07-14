@@ -184,10 +184,11 @@ int my_alias(info_t *);
 int _unset_alias(info_t *, char *);
 int seting_alias(info_t *, char *);
 int printing_alias(list_t *);
-/* **getline.c** */
-ssize_t get_input(info_t *);
-int _getline(info_t *, char **, size_t *);
-void sigintHandler(int);
+/* **__get_line__.c** */
+ssize_t in_buf(info_t *, char *, size_t);
+ssize_t get_in(info_t *);
+int _geting_line(info_t *, char **, size_t *);
+void sigin_Handler(int);
 
 /* **getinfo.c** */
 void clear_info(info_t *);
