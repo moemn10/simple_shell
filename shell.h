@@ -219,11 +219,11 @@ int delete_node_at_index(list_t **, unsigned int);
 void free_list(list_t **);
 
 /* **lists1.c** */
-size_t list_len(const list_t *);
-char **list_to_strings(list_t *);
-size_t print_list(const list_t *);
-list_t *node_starts_with(list_t *, char *, char);
-ssize_t get_node_index(list_t *, list_t *);
+size_t listing_len(const list_t *);
+char **list_str(list_t *);
+size_t out_list(const list_t *);
+list_t *node_start(list_t *, char *, char);
+ssize_t Get_node(list_t *, list_t *);
 
 /* **vars.c** */
 int is_chain(info_t *, char *, size_t *);
