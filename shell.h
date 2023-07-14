@@ -152,7 +152,7 @@ char *_strchr(char *, char);
 char **strtow(char *, char *);
 char **strtow2(char *, char);
 
-/* **realloc.c** */
+/* **__realloc.c__** */
 char *_mset(char *, char, unsigned int);
 void dbfree(char **);
 void *_lloc(void *, unsigned int, unsigned int);
@@ -190,10 +190,10 @@ ssize_t get_in(info_t *);
 int _geting_line(info_t *, char **, size_t *);
 void sigin_Handler(int);
 
-/* **getinfo.c** */
-void clear_info(info_t *);
-void set_info(info_t *, char **);
-void free_info(info_t *, int);
+/* **__geting_info__.c** */
+void clearing_info(info_t *);
+void seting_info(info_t *, char **);
+void fr_info(info_t *, int);
 
 /* **__environment__.c** */
 char *get_env(info_t *, const char *);
@@ -208,11 +208,11 @@ int _unseting_env(info_t *, char *);
 int _seting_env(info_t *, char *, char *);
 
 /* **history.c** */
-char *get_history_file(info_t *info);
-int write_history(info_t *info);
-int read_history(info_t *info);
-int build_history_list(info_t *info, char *buf, int linecount);
-int renumber_history(info_t *info);
+char *geting_history_file(info_t *info);
+int writing_history(info_t *info);
+int reading_history(info_t *info);
+int building_history_list(info_t *info, char *buf, int lc);
+int renumbering_history(info_t *info);
 
 /* **__lists.c__** */
 list_t *add_node(list_t **, const char *, int);
@@ -221,7 +221,7 @@ size_t print_list_str(const list_t *);
 int delete_node_at_index(list_t **, unsigned int);
 void free_list(list_t **);
 
-/* **__lists1__.c** */
+/* **__lists2__.c** */
 size_t listing_len(const list_t *);
 char **list_str(list_t *);
 size_t out_list(const list_t *);
