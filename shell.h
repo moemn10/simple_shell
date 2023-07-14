@@ -181,7 +181,9 @@ int my_help(info_t *);
 /* **__builtin1__.c** */
 int my_history(info_t *);
 int my_alias(info_t *);
-
+int _unset_alias(info_t *, char *);
+int seting_alias(info_t *, char *);
+int printing_alias(list_t *);
 /* **getline.c** */
 ssize_t get_input(info_t *);
 int _getline(info_t *, char **, size_t *);
@@ -218,7 +220,7 @@ size_t print_list_str(const list_t *);
 int delete_node_at_index(list_t **, unsigned int);
 void free_list(list_t **);
 
-/* **lists1.c** */
+/* **__lists1__.c** */
 size_t listing_len(const list_t *);
 char **list_str(list_t *);
 size_t out_list(const list_t *);
