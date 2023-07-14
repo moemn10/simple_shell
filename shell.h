@@ -137,9 +137,9 @@ int _strgo(char *, char *);
 char *start_data(const char *, const char *);
 char *_str_dot(char *, char *);
 
-/* **string1.c** */
-char *_strcpy(char *, char *);
-char *_strdup(const char *);
+/* **__string1__.c** */
+char *_Cp(char *, char *);
+char *_str_dupc_root(const char *);
 void _puts(char *);
 int _putchar(char);
 
