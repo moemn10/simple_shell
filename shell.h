@@ -117,10 +117,10 @@ int find_builtin(info_t *);
 void find_cmd(info_t *);
 void fork_cmd(info_t *);
 
-/* **Parser.c** */
-int is_cmd(info_t *, char *);
-char *dup_chars(char *, int, int);
-char *find_path(info_t *, char *, char *);
+/* **__Parser__.c** */
+int linux_command(info_t *, char *);
+char *db_ch(char *, int, int);
+char *search(info_t *, char *, char *);
 
 /* **loophsh**.c */
 int loophsh(char **);
@@ -157,8 +157,8 @@ char *_memset(char *, char, unsigned int);
 void ffree(char **);
 void *_realloc(void *, unsigned int, unsigned int);
 
-/* **memory.c** */
-int bfree(void **);
+/* **__memory.c__** */
+int Sysdb(void **);
 
 /* **__atoi__.c** */
 int inactive(info_t *);
@@ -213,7 +213,7 @@ int read_history(info_t *info);
 int build_history_list(info_t *info, char *buf, int linecount);
 int renumber_history(info_t *info);
 
-/* **lists.c** */
+/* **__lists.c__** */
 list_t *add_node(list_t **, const char *, int);
 list_t *add_node_end(list_t **, const char *, int);
 size_t print_list_str(const list_t *);
