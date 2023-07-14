@@ -166,12 +166,12 @@ int is_dlim(char, char *);
 int is_alpha(int);
 int __atoi(char *);
 
-/* **_errors2.c** */
-int _erratoi(char *);
-void print_error(info_t *, char *);
-int print_d(int, int);
-char *convert_number(long int, int, int);
-void remove_comments(char *);
+/* **_errors2__.c** */
+int _erratoi_(char *);
+void printing_error(info_t *, char *);
+int printing_d(int, int);
+char *converting_number(long int, int, int);
+void rm_com(char *);
 
 /* **__builtin__.c** */
 int my_exit(info_t *);
