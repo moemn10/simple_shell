@@ -1,11 +1,11 @@
 #include "shell.h"
 
 /**
- * listing_Len - Determines Length OF Linked List.
+ * listing_len - Determines Length OF Linked List.
  * @h: Pointer To First node.
  * Return: Size OF List.
  */
-size_t listing_Len(const list_t *h)
+size_t listing_len(const list_t *h)
 {
 	size_t Z = 0;
 
@@ -25,7 +25,7 @@ size_t listing_Len(const list_t *h)
 char **list_str(list_t *head)
 {
 	list_t *node = head;
-	size_t Z = listing_Len(head), x;
+	size_t Z = listing_len(head), x;
 	char **strAll;
 	char *str_one;
 
@@ -36,7 +36,7 @@ char **list_str(list_t *head)
 		return (NULL);
 	for (Z = 0; node; node = node->next, Z++)
 	{
-		str_one = malloc(_strlen(node->str_one) + 1);
+		str_one = malloc(_strlength(node->str_one) + 1);
 		if (!str_one)
 		{
 			for (x = 0; x < Z; x++)
@@ -45,7 +45,7 @@ char **list_str(list_t *head)
 			return (NULL);
 		}
 
-		str_one = _strcpy(str, node->str_one);
+		str_one = _Cp(str, node->str_one);
 		strAll[Z] = str_one;
 	}
 	strAll[Z] = NULL;
@@ -65,7 +65,7 @@ size_t out_list(const list_t *h)
 
 	while (h)
 	{
-		_puts(convert_number(h->num, 10, 0));
+		_puts(converting_number(h->num, 10, 0));
 		_putchar(':');
 		_putchar(' ');
 		_puts(h->str_one ? h->str_one : "(nil)");
@@ -77,7 +77,7 @@ size_t out_list(const list_t *h)
 }
 
 /**
- * node_starts_with - returns node whose string starts with prefix
+ * node_start - returns node whose string starts with prefix
  * @node: pointer to list head
  * @prefix: string to match
  * @c: the next character after prefix to match

@@ -17,22 +17,22 @@ ssize_t in_buf(info_t *info, char **buf, size_t *l)
 	{
 		free(*buf);
 		*buf = NULL;
-		signal(SIGINT, sigintHandler);
+		signal(SIGINT, sigin_Handler);
 #if USE_GETLINE
 		i = getline(buf, &len_p, stdin);
 #else
-		i = _getline(info, buf, &len_p);
+		i = _geting_line(info, buf, &len_p);
 #endif
 		if (i > 0)
 		{
 			if ((*buf)[i - 1] == '\n')
 			{
-				(*buf)[r - 1] = '\0'; /* remove trailing newline */
+				(*buf)[r - 1] = '\0'; /* removing trailing newline */
 				i--;
 			}
 			info->linecount_flag = 1;
 			rm_com(*buf);
-			build_history_list(info, *buf, info->histcount++);
+			building_history_list(info, *buf, info->histcount++);
 			/* if (_strchr(*buf, ';')) is this a command chain? */
 			{
 				*l = i;
@@ -57,18 +57,18 @@ ssize_t get_in(info_t *info)
 	char **buf_p = &(info->arg), *k;
 
 	_putchar(BUF_FLUSH);
-	i = input_buf(info, &buf, &l);
+	i = in_buf(info, &buf, &l);
 	if (i == -1) /* **EOF** */
 		return (-1);
-	if (l) /* **We have commands left in the chain buffe**r */
+	if (l) /* **We have commands left in the chain buff */
 	{
-		q = r; /* **Init new iterator to current buf position** */
+		q = r; /* **Init new iterator to current buf pos** */
 		k = buf + r; /* **Get pointer for return** */
 
-		check_chain(info, buf, &q, r, l);
+		check_bbc(info, buf, &q, r, l);
 		while (q < l) /* **Iterate to semicolon or end** */
 		{
-			if (is_chain(info, buf, &q))
+			if (bbc(info, buf, &q))
 				break;
 			q++;
 		}
@@ -81,7 +81,7 @@ ssize_t get_in(info_t *info)
 		}
 
 		*buf_p = k; 
-		return (_strlen(k)); 
+		return (_strlength(k)); 
 	}
 
 	*buf_p = buf; 
@@ -136,8 +136,8 @@ int _geting_line(info_t *info, char **ptr, size_t *len)
 
 	x = _strchr(buf + r, '\n');
 	p = x ? 1 + (unsigned int)(x - buf) : l;
-	new_p = _realloc(k, h, h ? h + p : p + 1);
-	if (!new_p) /* MALLOC FAILURE! */
+	new_p = _lloc(k, h, h ? h + p : p + 1);
+	if (!new_p) /* MALLOC F! */
 		return (k ? free(k), -1 : -1);
 
 	if (h)

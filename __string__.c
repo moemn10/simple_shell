@@ -40,7 +40,7 @@ int _strgo(char *s1, char *s2)
 }
 
 /**
- * start - Checks If need To start With haystack
+ * start_data - Checks If need To start With haystack
  * @haystack: String To Search
  * @needle: the substring to find
  *

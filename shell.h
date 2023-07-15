@@ -189,6 +189,7 @@ ssize_t in_buf(info_t *, char *, size_t);
 ssize_t get_in(info_t *);
 int _geting_line(info_t *, char **, size_t *);
 void sigin_Handler(int);
+ssize_t read_buf(info_t *, char *, size_t *);
 
 /* **__geting_info__.c** */
 void clearing_info(info_t *);
@@ -214,12 +215,12 @@ int reading_history(info_t *info);
 int building_history_list(info_t *info, char *buf, int lc);
 int renumbering_history(info_t *info);
 
-/* **__lists.c__** */
-list_t *add_node(list_t **, const char *, int);
-list_t *add_node_end(list_t **, const char *, int);
-size_t print_list_str(const list_t *);
-int delete_node_at_index(list_t **, unsigned int);
-void free_list(list_t **);
+/* **__lists1__.c** */
+list_t *adding_node(list_t **, const char *, int);
+list_t *adding_node_end(list_t **, const char *, int);
+size_t printing_list_str(const list_t *);
+int deleting_node_index(list_t **, unsigned int);
+void fr_list(list_t **);
 
 /* **__lists2__.c** */
 size_t listing_len(const list_t *);

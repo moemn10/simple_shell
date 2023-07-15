@@ -13,25 +13,25 @@ int mkw(info_t *info, char **av)
 
 	while (Y != -1 && bin != -2)
 	{
-		clear_info(info);
-		if (interactive(info))
+		clearing_info(info);
+		if (inactive(info))
 			_puts("$ ");
-		_eputchar(BUF_FLUSH);
-		Y = get_input(info);
+		_erputchar(BUF_FLUSH);
+		Y = get_in(info);
 		if (Y != -1)
 		{
-			set_info(info, av);
+			seting_info(info, av);
 			bin = search_built(info);
 			if (bin == -1)
 				find_lin(info);
 		}
-		else if (interactive(info))
+		else if (inactive(info))
 			_putchar('\n');
-		free_info(info, 0);
+		fr_info(info, 0);
 	}
-	write_history(info);
-	free_info(info, 1);
-	if (!interactive(info) && info->status)
+	writing_history(info);
+	fr_info(info, 1);
+	if (!inactive(info) && info->status)
 		exit(info->status);
 	if (bin == -2)
 	{
@@ -55,19 +55,19 @@ int search_built(info_t *info)
 {
 	int X, ret = -1;
 	builtin_table builtintbl[] = {
-		{"exit", _myexit},
-		{"env", _myenv},
-		{"help", _myhelp},
-		{"history", _myhistory},
-		{"setenv", _mysetenv},
-		{"unsetenv", _myunsetenv},
-		{"cd", _mycd},
-		{"alias", _myalias},
+		{"exit", my_exit},
+		{"env", my_env},
+		{"help", my_help},
+		{"history", my_history},
+		{"setenv", my_setenv},
+		{"unsetenv", my_unsetenv},
+		{"cd", my_cd},
+		{"alias", my_alias},
 		{NULL, NULL}
 	};
 
 	for (X = 0; builtintbl[X].type; X++)
-		if (_strcmp(info->argv[0], builtintbl[X].type) == 0)
+		if (_strgo(info->argv[0], builtintbl[X].type) == 0)
 		{
 			info->line_count++;
 			ret = builtintbl[X].func(info);
@@ -93,12 +93,12 @@ void find_lin(info_t *info)
 		info->linecount_flag = 0;
 	}
 	for (W = 0, V = 0; info->arg[W]; W++)
-		if (!is_delim(info->arg[W], " \t\n"))
+		if (!is_dlim(info->arg[W], " \t\n"))
 			V++;
 	if (!V)
 		return;
 
-	path = search(info, _getenv(info, "PATH="), info->argv[0]);
+	path = search(info, get_env(info, "PATH="), info->argv[0]);
 	if (path)
 	{
 		info->path = path;
@@ -106,13 +106,13 @@ void find_lin(info_t *info)
 	}
 	else
 	{
-		if ((interactive(info) || _getenv(info, "PATH=")
+		if ((inactive(info) || get_env(info, "PATH=")
 					|| info->argv[0][0] == '/') && linux_command(info, info->argv[0]))
 			fork_Command(info);
 		else if (*(info->arg) != '\n')
 		{
 			info->status = 127;
-			print_error(info, "not found\n");
+			printing_error(info, "not found\n");
 		}
 	}
 }
@@ -136,9 +136,9 @@ void fork_Command(info_t *info)
 	}
 	if (child_pid == 0)
 	{
-		if (execve(info->path, info->argv, get_environ(info)) == -1)
+		if (execve(info->path, info->argv, geting_environ(info)) == -1)
 		{
-			free_info(info, 1);
+			fr_info(info, 1);
 			if (errno == EACCES)
 				exit(126);
 			exit(1);
@@ -152,7 +152,7 @@ void fork_Command(info_t *info)
 		{
 			info->status = WEXITSTATUS(info->status);
 			if (info->status == 126)
-				print_error(info, "Permission denied\n");
+				printing_error(info, "Permission denied\n");
 		}
 	}
 }
