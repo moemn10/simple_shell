@@ -58,7 +58,7 @@ int _unseting_env(info_t *info, char *var)
  * @value: the string env var value
  *  Return: Always 0
  */
-int _seing_tenv(info_t *info, char *var, char *value)
+int _seting_env(info_t *info, char *var, char *value)
 {
 	char *buf = NULL;
 	list_t *node;
