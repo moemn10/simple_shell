@@ -85,7 +85,7 @@ int my_cd(info_t *info)
  * constant function prototype.
  * Return: Always 0
  */
-int my-help(info_t *info)
+int my_help(info_t *info)
 {
 	char **arg_array;
 

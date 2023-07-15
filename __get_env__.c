@@ -10,7 +10,7 @@ char **geting_environ(info_t *info)
 {
 	if (!info->environ || info->env_changed)
 	{
-		info->environ = listing_to_strings(info->env);
+		info->environ = list_str(info->env);
 		info->env_changed = 0;
 	}
 

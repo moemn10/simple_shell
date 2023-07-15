@@ -8,13 +8,13 @@
  */
 int linux_command(info_t *info, char *path)
 {
-	struct dir Su;
+	struct stat st;
 
 	(void)info;
-	if (!path || dir(path, &Su))
+	if (!path || stat(path, &st))
 		return (0);
 
-	if (Su.Su_mode & S_IFREG)
+	if (st.st_mode & S_IFREG)
 	{
 		return (1);
 	}
@@ -54,7 +54,7 @@ char *search(info_t *info, char *pathstr, char *cmd)
 
 	if (!pathstr)
 		return (NULL);
-	if ((_strlength(cmd) > 2) && start(cmd, "./"))
+	if ((_strlength(cmd) > 2) && start_data(cmd, "./"))
 	{
 		if (linux_command(info, cmd))
 			return (cmd);
@@ -65,11 +65,11 @@ char *search(info_t *info, char *pathstr, char *cmd)
 		{
 			path = db_ch(pathstr, var, i);
 			if (!*path)
-				_strcat(path, cmd);
+				_str_dot(path, cmd);
 			else
 			{
-				_strcat(path, "/");
-				_strcat(path, cmd);
+				_str_dot(path, "/");
+				_str_dot(path, cmd);
 			}
 			if (linux_command(info, path))
 				return (path);

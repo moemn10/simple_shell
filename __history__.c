@@ -74,7 +74,7 @@ int reading_history(info_t *info)
 	if (fd == -1)
 		return (0);
 	if (!fstat(fd, &st))
-		fsize = Su.Su_size;
+		fsize = st.st_size;
 	if (fsize < 2)
 		return (0);
 	buf = malloc(sizeof(char) * (fsize + 1));
@@ -89,7 +89,7 @@ int reading_history(info_t *info)
 		if (buf[r] == '\n')
 		{
 			buf[r] = 0;
-			building_history_list(info, buf + last, c++);
+			building_history_list(info, buf + last, lc++);
 			last = r + 1;
 		}
 	if (last != r)

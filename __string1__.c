@@ -35,7 +35,7 @@ char *_str_dupc_root(const char *str)
 		return (NULL);
 	while (*str++)
 		length_one++;
-	ret = malloc(sizeof(char) * (length + 1));
+	ret = malloc(sizeof(char) * (length_one + 1));
 	if (!ret)
 		return (NULL);
 	for (length_one++; length_one--;)

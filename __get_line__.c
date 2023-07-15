@@ -27,7 +27,7 @@ ssize_t in_buf(info_t *info, char **buf, size_t *l)
 		{
 			if ((*buf)[i - 1] == '\n')
 			{
-				(*buf)[r - 1] = '\0'; /* removing trailing newline */
+				(*buf)[i - 1] = '\0'; /* removing trailing newline */
 				i--;
 			}
 			info->linecount_flag = 1;

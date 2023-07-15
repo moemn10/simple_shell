@@ -32,7 +32,7 @@ void dbfree(char **pp)
 }
 
 /**
- * _realloc - Reallocates A block Of memory
+ * _lloc - Reallocates A block Of memory
  * @ptr: pointer to prev malloc'ated block
  * @old_size: Byte Size Of prev block
  * @new_size: Byte Size Of New block
@@ -49,7 +49,7 @@ void *_lloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	if (new_size == old_size)
 		return (ptr);
 
-	p = malloc(new_size);
+	U = malloc(new_size);
 	if (!U)
 		return (NULL);
 

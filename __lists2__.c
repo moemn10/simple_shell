@@ -26,30 +26,30 @@ char **list_str(list_t *head)
 {
 	list_t *node = head;
 	size_t Z = listing_len(head), x;
-	char **strAll;
-	char *str_one;
+	char **strs;
+	char *str;
 
 	if (!head || !Z)
 		return (NULL);
-	strAll = malloc(sizeof(char *) * (Z + 1));
-	if (!strAll)
+	strs = malloc(sizeof(char *) * (Z + 1));
+	if (!strs)
 		return (NULL);
 	for (Z = 0; node; node = node->next, Z++)
 	{
-		str_one = malloc(_strlength(node->str_one) + 1);
-		if (!str_one)
+		str = malloc(_strlength(node->str) + 1);
+		if (!str)
 		{
 			for (x = 0; x < Z; x++)
-				free(strAll[x]);
-			free(strAll);
+				free(strs[x]);
+			free(strs);
 			return (NULL);
 		}
 
-		str_one = _Cp(str, node->str_one);
-		strAll[Z] = str_one;
+		str = _Cp(str, node->str);
+		strs[Z] = str;
 	}
-	strAll[Z] = NULL;
-	return (strAll);
+	strs[Z] = NULL;
+	return (strs);
 }
 
 
@@ -68,7 +68,7 @@ size_t out_list(const list_t *h)
 		_puts(converting_number(h->num, 10, 0));
 		_putchar(':');
 		_putchar(' ');
-		_puts(h->str_one ? h->str_one : "(nil)");
+		_puts(h->str ? h->str : "(nil)");
 		_puts("\n");
 		h = h->next;
 		Z++;
@@ -90,7 +90,7 @@ list_t *node_start(list_t *node, char *prefix, char c)
 
 	while (node)
 	{
-		p = start(node->str_one, prefix);
+		p = start_data(node->str, prefix);
 		if (p && ((c == -1) || (*p == c)))
 			return (node);
 		node = node->next;

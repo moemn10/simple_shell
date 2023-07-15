@@ -39,7 +39,6 @@ int main(int ac, char **av)
 	}
 	pop_env_list(info);
 	reading_history(info);
-	hsh(info, av);
+	mkw(info, av);
 	return (EXIT_SUCCESS);
 }
-

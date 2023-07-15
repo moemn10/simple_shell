@@ -36,7 +36,7 @@ int bbc(info_t *info, char *buf, size_t *p)
 }
 
 /**
- * check_chain - checks we should continue chaining based on last status
+ * check_bbc - checks we should continue chaining based on last status
  * @info: the parameter struct
  * @buf: the char buffer
  * @p: Address Of current position in buf
@@ -82,14 +82,14 @@ int rep_alias(info_t *info)
 
 	for (i = 0; i < 10; i++)
 	{
-		node = node_starts_with(info->alias, info->argv[0], '=');
+		node = node_start(info->alias, info->argv[0], '=');
 		if (!node)
 			return (0);
 		free(info->argv[0]);
 		p = _strchr(node->str, '=');
 		if (!p)
 			return (0);
-		p = _strdup(p + 1);
+		p = _str_dupc_root(p + 1);
 		if (!p)
 			return (0);
 		info->argv[0] = p;
@@ -112,26 +112,26 @@ int rep_vars(info_t *info)
 		if (info->argv[x][0] != '$' || !info->argv[x][1])
 			continue;
 
-		if (!_strcmp(info->argv[x], "$?"))
+		if (!_strgo(info->argv[x], "$?"))
 		{
-			replace_string(&(info->argv[x]),
-					_str_dupc_root(convert_number(info->status, 10, 0)));
+			rep_string(&(info->argv[x]),
+					_str_dupc_root(converting_number(info->status, 10, 0)));
 			continue;
 		}
-		if (!_strcmp(info->argv[x], "$$"))
+		if (!_strgo(info->argv[x], "$$"))
 		{
-			replace_string(&(info->argv[x]),
-					_str_dupc_root(convert_number(getpid(), 10, 0)));
+			rep_string(&(info->argv[x]),
+					_str_dupc_root(converting_number(getpid(), 10, 0)));
 			continue;
 		}
 		node = node_start(info->env, &info->argv[x][1], '=');
 		if (node)
 		{
-			replace_string(&(info->argv[x]),
+			rep_string(&(info->argv[x]),
 					_str_dupc_root(_strchr(node->str, '=') + 1));
 			continue;
 		}
-		replace_string(&info->argv[x], _strdup(""));
+		rep_string(&info->argv[x], _str_dupc_root(""));
 
 	}
 	return (0);

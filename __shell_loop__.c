@@ -59,8 +59,8 @@ int search_built(info_t *info)
 		{"env", my_env},
 		{"help", my_help},
 		{"history", my_history},
-		{"setenv", my_setenv},
-		{"unsetenv", my_unsetenv},
+		{"setenv", my_set_env},
+		{"unsetenv", my_unset_env},
 		{"cd", my_cd},
 		{"alias", my_alias},
 		{NULL, NULL}
