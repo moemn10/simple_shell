@@ -89,12 +89,7 @@ int printing_d(int in, int fd)
  * converting_number - convertering function, a clone of itoa
  * @n: number
  * @base: base
-<<<<<<< HEAD
- * @flags: argument Flags
-=======
  * @fg: argument flags
->>>>>>> ac58511b78e35a7504d0ab64c299cca128f7aa93
- *
  * Return: string
  */
 char *converting_number(long int n, int base, int fg)
@@ -128,7 +123,6 @@ char *converting_number(long int n, int base, int fg)
 /**
  * rm_com - function replaces first instance of '#' with '\0'
  * @buf: address of the string to modify
- *
  * Return: Always 0;
  */
 void rm_com(char *buf)
