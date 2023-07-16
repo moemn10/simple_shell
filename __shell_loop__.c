@@ -47,9 +47,9 @@ int mkw(info_t *info, char **av)
  * @info: the parameter And Return about struct
  *
  * Return: -1 if builtin Not Found,
- * 	0 if builtin Executed Successfully,
- * 	1 if builtin Found but Not Successful,
- * 	2 if builtin Signals exit()
+ *	0 if builtin Executed Successfully,
+ *	1 if builtin Found but Not Successful,
+ *	2 if builtin Signals exit()
  */
 int search_built(info_t *info)
 {

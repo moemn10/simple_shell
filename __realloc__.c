@@ -11,7 +11,7 @@ char *_mset(char *s, char b, unsigned int n)
 {
 	unsigned int C;
 
-	for (C = 0; C < n; C++)
+	for (C = 0; n > C; C++)
 		s[C] = b;
 	return (s);
 }

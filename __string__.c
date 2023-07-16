@@ -6,7 +6,7 @@
  *
  * Return: integer length of string
  */
-int _strlegnth(char *s)
+int _strlength(char *s)
 {
 	int D = 0;
 

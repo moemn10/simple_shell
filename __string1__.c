@@ -22,7 +22,7 @@ char *_Cp(char *dest, char *src)
 }
 
 /**
- * _strdup_dupc_root - duplicates A str
+ * _str_dupc_root - duplicates A str
  * @str: The str To Duplicate
  * Return: Ptr To the Duplicated str
  */

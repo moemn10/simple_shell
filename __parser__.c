@@ -33,7 +33,7 @@ char *db_ch(char *pathstr, int start, int stop)
 	static char buf[1024];
 	int Q = 0, T = 0;
 
-	for (T = 0, Q = start; Q < stop; Q++)
+	for (T = 0, Q = start; stop > Q; Q++)
 		if (pathstr[Q] != ':')
 			buf[T++] = pathstr[Q];
 	buf[T] = 0;
