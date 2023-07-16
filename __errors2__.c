@@ -12,7 +12,7 @@ int _erratoi_(char *h)
 	unsigned long int result = 0;
 
 	if (*h == '+')
-		h++;  /* TODO: why does this make main return 255? */
+		h++;  /* TODO: WHY does This Make Main Return 255? */
 	for (r = 0;  h[r] != '\0'; r++)
 	{
 		if (h[r] >= '0' && h[r] <= '9')
@@ -89,7 +89,7 @@ int printing_d(int in, int fd)
  * converting_number - convertering function, a clone of itoa
  * @num: number
  * @base: base
- * @flags: argument flags
+ * @flags: argument Flags
  *
  * Return: string
  */
