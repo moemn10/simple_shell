@@ -11,7 +11,7 @@ int my_exit(info_t *info)
 {
 	int exitcheck;
 
-	if (info->argv[1]) 
+	if (info->argv[1])
 	{
 		exitcheck = _erratoi_(info->argv[1]);
 		if (exitcheck == -1)

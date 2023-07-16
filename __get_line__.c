@@ -4,7 +4,7 @@
  * in_buf - buffering chained commands
  * @info: parameter struct
  * @buf: address of buffer
- * @len: address of len var
+ * @l: address of len var
  *
  * Return: bytes read
  */
@@ -73,19 +73,19 @@ ssize_t get_in(info_t *info)
 			q++;
 		}
 
-		r = q + 1; 
-		if (r >= l) 
+		r = q + 1;
+		if (r >= l)
 		{
-			r = l = 0; 
+			r = l = 0;
 			info->cmd_buf_type = CMD_NORM;
 		}
 
-		*buf_p = k; 
-		return (_strlength(k)); 
+		*buf_p = k;
+		return (_strlength(k));
 	}
 
-	*buf_p = buf; 
-	return (i); 
+	*buf_p = buf;
+	return (i);
 }
 
 /**
@@ -112,7 +112,7 @@ ssize_t read_buf(info_t *info, char *buf, size_t *i)
  * _geting_line - gets the next line of input from STDIN
  * @info: parameter struct
  * @ptr: address of pointer to buffer, preallocated or NULL
- * @length: size of preallocated ptr buffer if not NULL
+ * @len: size of preallocated ptr buffer if not NULL
  *
  * Return: s
  */

@@ -87,9 +87,9 @@ int printing_d(int in, int fd)
 
 /**
  * converting_number - convertering function, a clone of itoa
- * @num: number
+ * @n: number
  * @base: base
- * @flags: argument flags
+ * @fg: argument flags
  *
  * Return: string
  */
